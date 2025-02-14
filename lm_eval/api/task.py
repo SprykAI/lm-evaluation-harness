@@ -928,7 +928,7 @@ class ConfigurableTask(Task):
 
     def download(self, dataset_kwargs: Optional[Dict[str, Any]] = None) -> None:
         self.dataset = datasets.load_dataset(
-            path=self.DATASET_PATH,
+            path=self.DATASET_PATH if self.DATASET_PATH != "hendrycks/competition_math" else "DigitalLearningGmbH/MATH-lighteval",
             name=self.DATASET_NAME,
             **dataset_kwargs if dataset_kwargs is not None else {},
         )
